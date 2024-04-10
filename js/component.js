@@ -11,12 +11,7 @@ class Component {
     this.element.style.position = "absolute";
     this.element.style.width = `${width}px`;
     this.element.style.height = `${height}px`;
-
     this.gameScreen.appendChild(this.element);
-  }
-
-  clamp(value, min, max) {
-    return Math.max(min, Math.min(value, max));
   }
 
   updatePosition() {
