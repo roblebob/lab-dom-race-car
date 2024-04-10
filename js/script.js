@@ -1,12 +1,33 @@
 window.onload = function () {
-  const startButton = document.getElementById("start-button");
-  const restartButton = document.getElementById("restart-button");
+  document
+    .getElementById("start-button")
+    .addEventListener("click", () => game.start());
+  document
+    .getElementById("restart-button")
+    .addEventListener("click", () => location.reload());
 
-  startButton.addEventListener("click", function () {
-    startGame();
-  });
+  let game = new Game(500, 500);
 
-  function startGame() {
-    console.log("start game");
-  }
+  document.onkeydown = (event) => {
+    event.preventDefault();
+    switch (event.key) {
+      case "ArrowLeft":
+        game.player.directionX -= 1;
+        break;
+      case "ArrowRight":
+        game.player.directionX += 1;
+        break;
+      case "ArrowUp":
+        game.player.directionY -= 1;
+        break;
+      case "ArrowDown":
+        game.player.directionY += 1;
+        break;
+    }
+  };
+
+  document.onkeyup = (event) => {
+    game.player.directionX = 0;
+    game.player.directionY = 0;
+  };
 };
